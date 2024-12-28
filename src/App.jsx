@@ -1,8 +1,9 @@
 import React from "react";
-import RandColor from "./components/ColorWrapper";
+import RandColor from "./pages/ColorWrapper";
 import { NavLink, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
+import TextRedactor from "./pages/TextRedactor";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -16,7 +17,10 @@ function App() {
         className="min-h-screen"
       >
         <Routes>
+          <Route path="/" element={<RandColor />} />
           <Route path="/color" element={<RandColor />} />
+
+          <Route path="/textRedactor" element={<TextRedactor />} />
         </Routes>
       </div>
     </>

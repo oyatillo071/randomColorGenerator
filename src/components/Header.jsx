@@ -30,6 +30,15 @@ function Header() {
       >
         Random Color
       </NavLink>
+      <NavLink
+        to="/textRedactor"
+        style={{
+          color: mode == "light" ? "black" : "white",
+        }}
+        className=" hover:underline underline-offset-8"
+      >
+        Text Redactor
+      </NavLink>
       <button onClick={handleMode} className="p-2">
         {mode === "light" ? (
           <MoonIcon className="w-10 h-8" />

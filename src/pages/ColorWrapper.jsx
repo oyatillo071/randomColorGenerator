@@ -30,8 +30,8 @@ const RandomColorBox = () => {
     >
       <div className="flex items-center gap-5">
         <div
-          className={`w-52 h-52 relative rounded-full justify-center flex flex-col text-white overflow-hidden border-${
-            mode == "light" ? "black" : "black"
+          className={`w-52 h-52 relative rounded-full justify-center flex flex-col text-white overflow-hidden border-2 border-${
+            mode == "light" ? "white" : "black"
           }`}
           style={{
             backgroundColor: color,
