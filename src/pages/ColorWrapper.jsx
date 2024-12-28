@@ -1,6 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { generateRandomValue, inputColor } from "../../store/randomValueSlice";
+import {
+  generateRandomGradient,
+  generateRandomValue,
+  inputColor,
+} from "../../store/randomValueSlice";
 import { ClipboardCopyIcon } from "@radix-ui/react-icons";
 import { Toaster, toast } from "sonner";
 
@@ -28,13 +32,13 @@ const RandomColorBox = () => {
       }}
       className="flex justify-center items-center p-5 "
     >
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-5 flex-col">
         <div
-          className={`w-52 h-52 relative rounded-full justify-center flex flex-col text-white overflow-hidden border-2 border-${
+          className={`w-full h-52 relative rounded-md justify-center flex flex-col text-white overflow-hidden border-2 border-${
             mode == "light" ? "white" : "black"
           }`}
           style={{
-            backgroundColor: color,
+            background: color,
           }}
         >
           <label
@@ -54,7 +58,7 @@ const RandomColorBox = () => {
         <div className="flex flex-col items-center gap-4">
           <button
             onClick={handleCopy}
-            className={`flex items-center gap-2 bg-white p-4 rounded-md text-xl ${
+            className={`flex items-center gap-2 bg-white p-4 text-wrap rounded-md text-xl ${
               mode === "light" ? "border-2" : "border-none"
             }`}
           >
@@ -73,6 +77,14 @@ const RandomColorBox = () => {
             }`}
           >
             Generate Random Color
+          </button>
+          <button
+            onClick={() => dispatch(generateRandomGradient())}
+            className={`btn p-3 text-xl select-none rounded-md ${
+              mode == "light" ? "bg-black text-white" : "bg-white text-black"
+            }`}
+          >
+            Generate Random Gradient
           </button>
         </div>
       </div>

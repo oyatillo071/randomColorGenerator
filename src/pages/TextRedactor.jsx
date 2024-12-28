@@ -27,12 +27,17 @@ function TextRedactor() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-around">
+    <div className="flex flex-col items-center justify-around pt-5">
       <Toaster richColors position="top-right" expand={false} />
 
       <div className="flex items-center w-full justify-around">
         <div>
-          <label htmlFor="font-family">Font family</label>
+          <label
+            className={`text-${mode === "light" ? "black" : "white"}`}
+            htmlFor="font-family"
+          >
+            Font family
+          </label>
           <select
             id="font-family"
             className="bg-white rounded-md p-2  border-2 border-black flex text- items-center gap-4 justify-around"
@@ -54,12 +59,16 @@ function TextRedactor() {
           </select>
         </div>
         <div className="flex items-center flex-col  gap-3">
-          <label htmlFor="text-size">Text size</label>
+          <label
+            className={`text-${mode === "light" ? "black" : "white"}`}
+            htmlFor="text-size"
+          >
+            Text size
+          </label>
           <input
             type="range"
-            value={size}
             id="text-size"
-            min={1}
+            min={10}
             max={100}
             onChange={({ target: { value } }) => {
               value += "px";
@@ -68,7 +77,12 @@ function TextRedactor() {
           />
         </div>
         <div>
-          <label htmlFor="text-style">Text Style</label>
+          <label
+            className={`text-${mode === "light" ? "black" : "white"}`}
+            htmlFor="text-style"
+          >
+            Text Style
+          </label>
           <select
             id="text-style"
             onChange={({ target: { value } }) => {
@@ -92,7 +106,12 @@ function TextRedactor() {
           </select>
         </div>
         <div className="flex flex-col items-center">
-          <label htmlFor="font-weight">Font weight</label>
+          <label
+            className={`text-${mode === "light" ? "black" : "white"}`}
+            htmlFor="font-weight"
+          >
+            Font weight
+          </label>
           <input
             type="range"
             name=""
@@ -106,13 +125,15 @@ function TextRedactor() {
           />
         </div>
         <div>
-          <h3>Color</h3>
+          <h3 className={`text-${mode === "light" ? "black" : "white"}`}>
+            Color
+          </h3>
           <div
             className={`w-8 h-8 relative rounded-full justify-center flex flex-col text-white overflow-hidden border-2 border-${
-              mode == "light" ? "white" : "black"
+              mode != "light" ? "white" : "black"
             }`}
             style={{
-              backgroundColor: color,
+              background: color,
             }}
           >
             <label
@@ -139,7 +160,11 @@ function TextRedactor() {
         }}
       >
         <textarea
-          className="border w-full min-h-screen resize-none rounded-md p-2"
+          placeholder="Enter text..."
+          className={`border-2 w-full min-h-screen resize-none rounded-md p-2 
+              text-${mode === "light" ? "black" : "white"}
+              bg-${mode != "light" ? "[#2b2b2b]" : "white"}
+            `}
           value={inputTextValue}
           onChange={(e) => {
             setInputTextValue(e.target.value);
@@ -154,9 +179,8 @@ function TextRedactor() {
           id="text-area"
         ></textarea>
         <button
-          className={`flex items-center gap-2 bg-white absolute top-10 right-10 p-4 rounded-md text-xl ${
-            mode === "light" ? "border-2" : "border-none"
-          }`}
+          className={`flex items-center gap-2 bg-white  absolute top-10 right-10 p-4 rounded-md text-xl 
+          `}
         >
           <div className="relative group">
             <ClipboardCopyIcon className="w-5 h-5" />

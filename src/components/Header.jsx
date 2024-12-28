@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <header
-      className={`flex items-center border-b-2 border-x-none border-t-0 border-${
+      className={`flex items-center border-b-2 border-x-none border-t-0 gap-4 flex-wrap-reverse border-${
         mode == "light" ? "black" : "black"
       } justify-around px-10 py-2`}
       style={{
@@ -38,6 +38,15 @@ function Header() {
         className=" hover:underline underline-offset-8"
       >
         Text Redactor
+      </NavLink>
+      <NavLink
+        to="/form"
+        style={{
+          color: mode == "light" ? "black" : "white",
+        }}
+        className=" hover:underline underline-offset-8"
+      >
+        User Form
       </NavLink>
       <button onClick={handleMode} className="p-2">
         {mode === "light" ? (
