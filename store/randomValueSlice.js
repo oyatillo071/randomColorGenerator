@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import getRandomValue, { getRandomOpacityValue } from "./getRandomValue";
+import { directions } from "../src/constants/constants";
 
 const randomValueSlice = createSlice({
   name: "randomValue",
@@ -24,7 +25,14 @@ const randomValueSlice = createSlice({
         getRandomOpacityValue() / 100
       })`;
 
-      state.value = `linear-gradient(90deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+      const randomDirection =
+        directions[Math.floor(Math.random() * directions.length)];
+
+      if (randomDirection === "circle" || randomDirection === "ellipse") {
+        state.value = `${randomDirection} at 50% ${color1}, ${color2}, ${color3}`;
+      } else {
+        state.value = `linear-gradient(${randomDirection}, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+      }
     },
     inputColor: (state, action) => {
       state.value = action.payload;

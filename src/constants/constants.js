@@ -30,3 +30,15 @@ export const textStyleVlaues = {
     },
   ],
 };
+export const directions = [
+  "90deg",
+  "180deg",
+  "45deg",
+  "135deg",
+  "to top",
+  "to bottom",
+  "to right",
+  "to left",
+  "circle",
+  "ellipse",
+];
